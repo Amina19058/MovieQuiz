@@ -65,6 +65,8 @@ final class MovieQuizViewController: UIViewController {
     }
     
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
+        self.view.isUserInteractionEnabled = false
+        
         let currentQuestion = questions[currentQuestionIndex]
         let givenAnswer = true
         
@@ -72,6 +74,8 @@ final class MovieQuizViewController: UIViewController {
     }
 
     @IBAction private func noButtonClicked(_ sender: UIButton) {
+        self.view.isUserInteractionEnabled = false
+        
         let currentQuestion = questions[currentQuestionIndex]
         let givenAnswer = false
         
@@ -90,6 +94,8 @@ final class MovieQuizViewController: UIViewController {
         let quizStepViewModel = convert(model: question)
         
         show(quiz: quizStepViewModel)
+
+        self.view.isUserInteractionEnabled = true
     }
     
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
