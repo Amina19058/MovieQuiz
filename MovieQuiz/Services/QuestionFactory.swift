@@ -45,7 +45,7 @@ final class QuestionFactory: QuestionFactoryProtocol {
 //                     correctAnswer: false)
 //    ]
     
-    init(moviesLoader: MoviesLoading, delegate: QuestionFactoryDelegate?) {
+    init(moviesLoader: MoviesLoading, delegate: QuestionFactoryDelegate) {
         self.moviesLoader = moviesLoader
         self.delegate = delegate
     }
@@ -75,7 +75,7 @@ final class QuestionFactory: QuestionFactoryProtocol {
             var imageData = Data()
            
            do {
-                imageData = try Data(contentsOf: movie.resizedImageURL)
+               imageData = try Data(contentsOf: movie.resizedImageURL)
             } catch {
                 print("Failed to load image")
             }

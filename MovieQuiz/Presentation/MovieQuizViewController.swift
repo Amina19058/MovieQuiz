@@ -48,7 +48,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate, 
 
     func didFailToLoadData(with error: Error) {
         showNetworkError(message: error.localizedDescription)
-        
     }
     
     // MARK: - Private functions
@@ -98,7 +97,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate, 
             buttonText: "Попробовать ещё раз",
             completion: { [weak self] in
                 guard let self = self else { return }
-                self.startQuiz()
+                
+                self.currentQuestionIndex = .zero
+                self.correctAnswers = .zero
+                
+                showLoadingIndicator()
+                self.questionFactory?.loadData()
             })
         
         alertPresenter.present(alertModel)
