@@ -11,7 +11,7 @@ final class AlertPresenter {
     private weak var viewControllerDelegate: ViewControllerDelegate?
     
     func setup(delegate: ViewControllerDelegate) {
-        self.viewControllerDelegate = delegate
+        viewControllerDelegate = delegate
     }
     
     func present(_ alertModel: AlertModel) {
@@ -25,7 +25,8 @@ final class AlertPresenter {
         }
 
         alert.addAction(action)
+        alert.view.accessibilityIdentifier = alertModel.accessibilityIdentifier
 
-        self.viewControllerDelegate?.present(alert, animated: true, completion: nil)
+        viewControllerDelegate?.present(alert, animated: true, completion: nil)
     }
 }
